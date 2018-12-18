@@ -1,0 +1,19 @@
+{
+  "name": "webcrawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "transpile": "tsc -p .",
+    "watch": "tsc -p . -w",
+    "start": "node build/App.js --inspect"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/htmlparser2": "^3.7.31",
+    "axios": "^0.18.0",
+    "htmlparser2": "^3.10.0"
+  }
+}
