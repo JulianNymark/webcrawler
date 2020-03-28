@@ -1,5 +1,6 @@
 import * as htmlparser from "htmlparser2";
 import axios, { AxiosResponse } from "axios";
+import { Dict } from "./utils";
 
 interface Link {
   loc: string;
@@ -9,10 +10,6 @@ interface Link {
 interface Keyword {
   word: string;
   count: number;
-}
-
-interface Dict<T> {
-  [key: string]: T;
 }
 
 class KeywordCounter {
@@ -158,7 +155,7 @@ class KeywordCounter {
   getSortedArray() {
     const array = [];
     const keys = Object.keys(this.keywords);
-    for (let key of keys) {
+    for (const key of keys) {
       array.push({ word: key, count: this.keywords[key] });
     }
     return array.sort((a, b) => a.count - b.count).reverse();
@@ -173,7 +170,7 @@ async function extractKeywords(
 
   let insideBody = false;
 
-  let parser = new htmlparser.Parser(
+  const parser = new htmlparser.Parser(
     {
       onopentag: function(name: string) {
         if (name === "body") {
@@ -186,7 +183,7 @@ async function extractKeywords(
         }
       },
       ontext: function(text) {
-        let split = text.split(/\W/);
+        const split = text.split(/\W/);
         split.forEach(word => {
           if (insideBody) {
             keywordCounter.addWord(word);
@@ -205,7 +202,7 @@ async function extractLinks(response: AxiosResponse<any>): Promise<Link[]> {
   const pageData = response.data;
   const links: Link[] = [];
 
-  let parser = new htmlparser.Parser(
+  const parser = new htmlparser.Parser(
     {
       onopentag: function(name, attribs) {
         if (name === "a") {
