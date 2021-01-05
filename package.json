@@ -15,7 +15,7 @@
     "@types/node": "^13.9.5",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "domhandler": "^3.0.0",
     "eslint": "^6.8.0",
     "htmlparser2": "^4.1.0",
